@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import GifSection from "./gif-section";
 
 export default function GiftButton() {
   return (
@@ -8,6 +9,7 @@ export default function GiftButton() {
       <Button size="lg" className="rounded-lg font-bold">
         I Love You
       </Button>
+      <GifSection />
     </div>
   );
 }
