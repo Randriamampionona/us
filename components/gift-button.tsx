@@ -53,7 +53,7 @@ export default function GiftButton() {
         size="lg"
         className="rounded-lg font-bold bg-loveRose shadow-2xl shadow-loveRose hover:bg-loveRose/75"
         onClick={onClick}
-        disabled={isPending}
+        disabled={isPending || timer > 0}
       >
         {isPending ? (
           <Loader className="animate-spin" />
