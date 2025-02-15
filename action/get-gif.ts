@@ -1,25 +1,56 @@
 "use server";
 
-type TParams = {
-  query: string;
+type MediaFormat = {
+  nanogif?: { url: string };
+  tinygif?: { url: string };
+  mediumgif?: { url: string };
+  gif?: { url: string };
+  mp4?: { url: string };
+  webm?: { url: string };
 };
 
-const YOUR_TENOR_API_KEY = "AIzaSyCHkiUBe95CRWuM37ZFTE49g_ILw6JNEHc";
+type TenorResult = {
+  id: string;
+  media_formats: MediaFormat;
+};
 
-export async function getchGifs({ query }: TParams) {
-  const API_KEY = YOUR_TENOR_API_KEY;
-  const limit = 1;
+type TenorApiResponse = {
+  results: TenorResult[];
+};
 
-  const response = await fetch(
-    `https://g.tenor.com/v1/search?q=${query}&key=${API_KEY}&limit=${limit}`
-  );
+const API_KEY = process.env.TENOR_KEY!;
+const clientkey = "love_project";
+const lmt = 1;
 
-  console.log(response);
+export async function getchGifs() {
+  try {
+    const searchTerms = [
+      // "bubu and dudu kiss",
+      // "dudu kiss",
+      // "bubu kiss",
+      // "cute bubu",
+      // "cute dudu",
+      // "i love you bubu",
+      // "i love you dudu",
+      // "miss you bubu",
+      // "miss you dudu",
+      "laugh",
+    ];
+    const randomTerm =
+      searchTerms[Math.floor(Math.random() * searchTerms.length)];
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch GIFs");
+    const searchUrl = `https://tenor.googleapis.com/v2/search?q=${randomTerm}&key=${API_KEY}&client_key=${clientkey}&limit=${lmt}&random=true`;
+
+    const response = await fetch(searchUrl);
+
+    const data: TenorApiResponse = await response.json();
+    if (data.results && data.results.length > 0) {
+      // PreviewGif(data.results[0].media_formats.nanogif.url);
+      // ShareGif(data.results[0].media_formats.gif.url);
+
+      return data.results[0].media_formats.gif?.url;
+    }
+  } catch (error: any) {
+    return `Error fetching GIFs:", ${error}`;
   }
-
-  const data = await response.json();
-  return data.results; // Returns the GIFs data
 }

@@ -1,10 +1,14 @@
 import Image from "next/image";
-import src from "../app/gifs/3.gif";
+import srcTEst from "../app/gifs/3.gif";
 
-export default function GifSection() {
+type TProps = {
+  src: string;
+};
+
+export default function GifSection({ src }: TProps) {
   return (
-    <div>
-      <Image src={src} width={500} height={500} alt="Picture of the author" />
+    <div className="z-10 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+      <Image src={srcTEst} alt="GIF image" width={498} height={372} />
     </div>
   );
 }
