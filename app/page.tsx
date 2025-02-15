@@ -12,8 +12,15 @@ export default function Home() {
       </div>
 
       <p className="absolute bottom-2 text-sm text-muted-foreground">
-        By <Link href="https://tooj-rtn.vercel.app/">Tooj Rtn</Link> &copy;{" "}
-        {new Date().getFullYear()}
+        By{" "}
+        <Link
+          href="https://tooj-rtn.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Tooj Rtn
+        </Link>{" "}
+        &copy; {new Date().getFullYear()}
       </p>
     </main>
   );
