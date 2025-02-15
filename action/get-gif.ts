@@ -25,16 +25,15 @@ const lmt = 1;
 export async function getchGifs() {
   try {
     const searchTerms = [
-      // "bubu and dudu kiss",
-      // "dudu kiss",
-      // "bubu kiss",
-      // "cute bubu",
-      // "cute dudu",
-      // "i love you bubu",
-      // "i love you dudu",
-      // "miss you bubu",
-      // "miss you dudu",
-      "laugh",
+      "bubu and dudu kiss",
+      "dudu kiss",
+      "bubu kiss",
+      "cute bubu",
+      "cute dudu",
+      "i love you bubu",
+      "i love you dudu",
+      "miss you bubu",
+      "miss you dudu",
     ];
     const randomTerm =
       searchTerms[Math.floor(Math.random() * searchTerms.length)];

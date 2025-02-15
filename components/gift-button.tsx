@@ -19,7 +19,7 @@ export default function GiftButton() {
 
       const result = await getchGifs();
       setGifUrl(result);
-      if (!!result) setTimer(5);
+      if (!!result) setTimer(7);
     } catch (error) {
       console.log(error);
       setIsPending(false);
