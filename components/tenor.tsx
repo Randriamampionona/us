@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function GifLoader() {
-  const [previewGif, setPreviewGif] = useState("");
+  const [_previewGif, setPreviewGif] = useState("");
   const [shareGif, setShareGif] = useState("");
 
   useEffect(() => {
